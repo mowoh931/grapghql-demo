@@ -1,0 +1,47 @@
+type Student{
+    studentId: Int!
+    lastname: String!
+    firstname  : String!
+    address :  String!
+}
+
+type StudentDto{
+    studentId: Int!
+    lastname: String!
+    firstname  : String!
+    address :  String!
+}
+
+input StudentDtoInput{
+    studentId: Int!
+    lastname: String!
+    firstname  : String!
+    address :  String!
+}
+
+
+
+type Query {
+    students: [StudentDto]
+    student(studentId: Int): StudentDto
+}
+
+type Mutation {
+#    register(studentId: Int, lastname:String, firstname: String , address : String): Student
+    register(input: StudentDtoInput): Student
+    updateStudent(studentId: Int, address: String): Student
+    deleteStudent(studentId:Int): Student
+}
+
+#type Mutation {
+#    createBook(title: String!, author: String!): Book
+#    updateBook(id: ID!, title: String, author: String): Book
+#    deleteBook(id: ID!): Boolean
+#}
+
+#type Book {
+#    id: ID!
+#    title: String!
+#    author: String!
+#}
+
