@@ -27,7 +27,7 @@ type Query {
 }
 
 type Mutation {
-#    register(studentId: Int, lastname:String, firstname: String , address : String): Student
+    #    register(studentId: Int, lastname:String, firstname: String , address : String): Student
     register(input: StudentDtoInput): Student
     updateStudent(studentId: Int, address: String): Student
     deleteStudent(studentId:Int): Student

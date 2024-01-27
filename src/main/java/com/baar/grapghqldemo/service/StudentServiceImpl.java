@@ -61,16 +61,6 @@ public class StudentServiceImpl implements StudentService {
                         .orElseThrow(() -> new Exception("Could not find student"))
         );
 
-
-//        Optional<Student> optional = repository.findById(studentId);
-//        if (optional.isPresent()) {
-//            Student student = optional.get();
-//            student.setAddress(address);
-//            repository.save(student);
-//            return student;
-//        } else {
-//            throw new Exception("Could not find student");
-//        }
     }
 
     @Override

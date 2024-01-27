@@ -11,11 +11,10 @@ import java.util.Optional;
 
 @Repository
 public class StudentRepository {
-    List<Student> students = new ArrayList<>();
+    private final List<Student> students = new ArrayList<>();
 
     @PostConstruct
     public void init() {
-
         students.add(Student.builder()
                 .studentId(1)
                 .lastname("Foo")
@@ -28,12 +27,10 @@ public class StudentRepository {
                 .firstname("John")
                 .address("Everywhere")
                 .build());
-//        return students;
     }
 
 
     public Student save(Student student) {
-
         student = Student.builder()
                 .studentId(student.getStudentId())
                 .lastname(student.getLastname())
@@ -41,14 +38,6 @@ public class StudentRepository {
                 .address(student.getAddress())
                 .build();
         students.add(student);
-
-
-//        getStudents().add(Student.builder()
-//                .studentId(student.getStudentId())
-//                .lastname(student.getLastname())
-//                .firstname(student.getFirstname())
-//                .address(student.getAddress())
-//                .build());
         return student;
     }
 
@@ -66,12 +55,13 @@ public class StudentRepository {
     }
 
     public Student delete(Integer id) {
-        Student student = findAll().stream().filter(s -> s.getStudentId() == id)
-                .findFirst().get();
-          students.remove(students);
-          return student;
-
+        Optional<Student> student = findById(id);
+        student.ifPresent(students::remove);
+        return student.get();
 
 
     }
+
+
 }
+
